@@ -1,6 +1,4 @@
 use std::ffi::CString;
-use std::mem;
-use std::os::raw::*;
 use std::ptr;
 
 use anyhow::Result;

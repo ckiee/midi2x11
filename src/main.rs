@@ -4,7 +4,7 @@ use midir::{Ignore, MidiInput};
 use std::env;
 use std::io::{stdin, stdout, Write};
 use std::sync::mpsc::channel;
-use std::{collections::HashMap, error::Error};
+use std::collections::HashMap;
 
 mod key;
 const USAGE: &str = "Usage:\t midi2x11 midi_key:x11_key ...\n\t\t midi2x11 23:Return 24:Escape";
@@ -64,6 +64,7 @@ fn main() -> Result<()> {
         move |stamp, message, _| {
             if message.len() > 1 {
                 // 1 byte long ones are boring
+                #[cfg(debug_assertions)]
                 println!("{}: {:?} (len = {})", stamp, message, message.len());
             }
             match message.len() {
